@@ -1,0 +1,122 @@
+.header {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  background: radial-gradient(circle at 50% -20%, rgba(245, 158, 11, 0.15), transparent 70%);
+}
+
+.title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.statsSection {
+  margin-bottom: 6rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.statCard {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--glass-bg);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.statNumber {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #f59e0b; /* Amber */
+  margin-bottom: 1rem;
+}
+
+.statLabel {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.timelineSection {
+  padding: 6rem 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--glass-border);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 4rem;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.testimonialCard {
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.quoteIcon {
+  color: rgba(16, 185, 129, 0.2);
+  margin-bottom: 1rem;
+}
+
+.quoteText {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.authorAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--accent-primary);
+}
+
+.authorDetails h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.authorDetails p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}

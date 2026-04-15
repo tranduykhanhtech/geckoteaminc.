@@ -1,0 +1,129 @@
+.footer {
+  background-color: var(--bg-tertiary);
+  border-top: 1px solid var(--glass-border);
+  padding-top: 5rem;
+  margin-top: auto;
+}
+
+.footerContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 640px) {
+  .footerContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footerContainer {
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  }
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.logo span {
+  color: var(--accent-primary);
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  max-width: 300px;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  border: 1px solid var(--glass-border);
+}
+
+.socialLinks a:hover {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: translateY(-3px);
+}
+
+.footerTitle {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.footerLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.footerLinks a {
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.footerLinks a:hover {
+  color: var(--accent-primary);
+}
+
+.contactInfo {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactInfo li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.icon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.contactInfo a {
+  transition: color 0.2s ease;
+}
+
+.contactInfo a:hover {
+  color: var(--accent-primary);
+}
+
+.footerBottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.5rem 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}

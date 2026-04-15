@@ -1,0 +1,98 @@
+.header {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  background: radial-gradient(circle at 50% -20%, rgba(16, 185, 129, 0.15), transparent 70%);
+}
+
+.title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .storyGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.storyContent h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.storyContent p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.storyImage {
+  aspect-ratio: 1;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coreValues {
+  background: var(--bg-secondary);
+  padding: 6rem 0;
+  border-top: 1px solid var(--glass-border);
+}
+
+.valuesTitle {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.valueCard {
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+
+.valueIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  color: var(--accent-primary);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+}
+
+.valueTitle {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.valueDesc {
+  color: var(--text-secondary);
+}

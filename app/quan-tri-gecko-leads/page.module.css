@@ -1,0 +1,73 @@
+.adminContainer {
+  padding: 4rem 2rem;
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+.header {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.tableWrapper {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  box-shadow: var(--glass-shadow);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th, .table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.table th {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.timestamp {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.emptyState {
+  padding: 4rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.alertBox {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68,0.2);
+  color: #ef4444;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+  text-align: center;
+}

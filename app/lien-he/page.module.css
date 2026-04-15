@@ -1,0 +1,139 @@
+.header {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  background: radial-gradient(circle at 50% -20%, rgba(16, 185, 129, 0.15), transparent 70%);
+}
+
+.title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contactContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  margin-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .contactContainer {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+
+.infoSection h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.infoSection p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.infoText h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+}
+
+.infoText p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.formBox {
+  padding: 3rem;
+  background: var(--bg-secondary);
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.statusMessage {
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-primary);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
