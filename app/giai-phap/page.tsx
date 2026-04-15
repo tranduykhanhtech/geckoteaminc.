@@ -21,6 +21,7 @@ export default function Solutions() {
       desc: 'Phần mềm quản lý bán hàng toàn diện, thao tác nhanh trên mọi thiết bị. Đồng bộ dữ liệu real-time giữa thu ngân, pha chế và quản lý.',
       features: ['Order nhanh chóng chỉ với 3 thao tác', 'Đồng bộ hóa đơn và in bếp tự động', 'Thanh toán QR tĩnh/động', 'Hoạt động offline khi mất mạng'],
       icon: <MonitorSmartphone size={48} />,
+      image: '/POS.svg',
       reverse: false
     },
     {
@@ -30,6 +31,7 @@ export default function Solutions() {
       desc: 'Giải pháp chấm công và phân ca làm việc tự động thông minh. Chấm công bằng khuôn mặt (FaceID) hoặc định vị GPS, tính lương chính xác từng phút.',
       features: ['Lên lịch làm việc tự động (Smart Scheduling)', 'Tính lương tự động cuối tháng', 'Đánh giá năng lực nhân viên', 'Quản lý ứng lương và hoa hồng'],
       icon: <Users size={48} />,
+      image: '/HR.svg',
       reverse: true
     },
     {
@@ -39,6 +41,7 @@ export default function Solutions() {
       desc: 'Kiểm soát chặt chẽ thất thoát nguyên vật liệu. Tự động trừ kho theo định mức món ăn ngay khi có phát sinh giao dịch thành công.',
       features: ['Thiết lập định mức hao hụt', 'Cảnh báo tồn kho tối thiểu', 'Quản lý nhà cung cấp và nhập hàng', 'Kiểm kê kho trên điện thoại'],
       icon: <PackageSearch size={48} />,
+      image: '/INVENTORY.svg',
       reverse: false
     },
     {
@@ -48,6 +51,7 @@ export default function Solutions() {
       desc: 'Giữ chân khách hàng cũ và thu hút khách hàng mới dễ dàng với các chương trình membership, thẻ tích điểm và voucher ưu đãi tự động.',
       features: ['Tự động phân nhóm khách hàng', 'Thiết lập hạng thẻ thành viên', 'Gửi SMS/Zalo chúc mừng sinh nhật', 'Quản lý chiến dịch khuyến mại'],
       icon: <HeartHandshake size={48} />,
+      image: '/DASHBOARD.svg',
       reverse: true
     }
   ];
@@ -70,10 +74,14 @@ export default function Solutions() {
           {solutions.map((item, index) => (
             <div key={item.id} id={item.id} className={`${styles.solutionCard} ${item.reverse ? styles.reverse : ''}`}>
               <AnimatedSection delay={0.1} className={styles.imageWrapper}>
-                <div className={styles.imagePlaceholder}>
-                  {item.icon}
-                  <span>Mô phỏng Giao diện {item.title}</span>
-                </div>
+                {item.image ? (
+                  <img src={item.image} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                ) : (
+                  <div className={styles.imagePlaceholder}>
+                    {item.icon}
+                    <span>Mô phỏng Giao diện {item.title}</span>
+                  </div>
+                )}
               </AnimatedSection>
               
               <AnimatedSection delay={0.2} className={styles.content}>
