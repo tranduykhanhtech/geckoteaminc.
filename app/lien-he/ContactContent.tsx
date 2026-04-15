@@ -13,7 +13,7 @@ export default function ContactContent() {
     email: '',
     message: ''
   });
-  
+
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -25,7 +25,7 @@ export default function ContactContent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    
+
     // Gọi hàm khởi tạo Client thay vì instance tĩnh
     const supabase = createClient();
 
@@ -42,17 +42,17 @@ export default function ContactContent() {
       const { error } = await supabase
         .from('contacts')
         .insert([
-          { 
-            name: formData.name, 
-            phone: formData.phone, 
-            email: formData.email, 
+          {
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
             message: formData.message,
             created_at: new Date().toISOString()
           }
         ]);
 
       if (error) throw error;
-      
+
       setStatus('success');
       setFormData({ name: '', phone: '', email: '', message: '' });
     } catch (err: any) {
@@ -80,7 +80,7 @@ export default function ContactContent() {
           <AnimatedSection className={styles.infoSection}>
             <h2>Thông tin liên hệ</h2>
             <p>
-              Gecko Team Inc. luôn sẵn sàng lắng nghe mọi khó khăn trong việc quản lý cửa hàng của bạn. 
+              Gecko Team Inc. luôn sẵn sàng lắng nghe mọi khó khăn trong việc quản lý cửa hàng của bạn.
               Hãy liên hệ qua các kênh dưới đây hoặc điền vào form đăng ký để được tư vấn miễn phí 100%.
             </p>
 
@@ -89,23 +89,23 @@ export default function ContactContent() {
                 <div className={styles.iconWrapper}><MapPin size={24} /></div>
                 <div className={styles.infoText}>
                   <h4>Trụ Sở Chính</h4>
-                  <p>Tầng 3, Tòa nhà Innovation, Khu Công Nghệ Cao, Thành phố Hồ Chí Minh</p>
+                  <p>289, Nguyễn Thái Sơn, Phường An Nhơn, TP. Hồ Chí Minh</p>
                 </div>
               </div>
-              
+
               <div className={styles.infoItem}>
                 <div className={styles.iconWrapper}><Phone size={24} /></div>
                 <div className={styles.infoText}>
                   <h4>Hotline Tư Vấn</h4>
-                  <p>0123 456 789 (Hỗ trợ 24/7)</p>
+                  <p>0388494802 (Hỗ trợ 24/7)</p>
                 </div>
               </div>
-              
+
               <div className={styles.infoItem}>
                 <div className={styles.iconWrapper}><Mail size={24} /></div>
                 <div className={styles.infoText}>
                   <h4>Email</h4>
-                  <p>contact@gecko.io.vn</p>
+                  <p>support@gecko.io.vn</p>
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function ContactContent() {
                 🎉 Cảm ơn bạn! Yêu cầu của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ sớm nhất.
               </div>
             )}
-            
+
             {status === 'error' && (
               <div className={`${styles.statusMessage} ${styles.error}`}>
                 ⚠️ {errorMessage}
@@ -132,13 +132,13 @@ export default function ContactContent() {
             <form onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
                 <label htmlFor="name" className={styles.label}>Họ và tên *</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
-                  required 
-                  className={styles.input} 
-                  placeholder="Nguyễn Văn A" 
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className={styles.input}
+                  placeholder="Nguyễn Văn A"
                   value={formData.name}
                   onChange={handleChange}
                 />
@@ -146,13 +146,13 @@ export default function ContactContent() {
 
               <div className={styles.formGroup}>
                 <label htmlFor="phone" className={styles.label}>Số điện thoại *</label>
-                <input 
-                  type="tel" 
-                  id="phone" 
-                  name="phone" 
-                  required 
-                  className={styles.input} 
-                  placeholder="09xx xxx xxx" 
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  className={styles.input}
+                  placeholder="09xx xxx xxx"
                   value={formData.phone}
                   onChange={handleChange}
                 />
@@ -160,12 +160,12 @@ export default function ContactContent() {
 
               <div className={styles.formGroup}>
                 <label htmlFor="email" className={styles.label}>Email (Tùy chọn)</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  className={styles.input} 
-                  placeholder="email@example.com" 
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className={styles.input}
+                  placeholder="email@example.com"
                   value={formData.email}
                   onChange={handleChange}
                 />
@@ -173,19 +173,19 @@ export default function ContactContent() {
 
               <div className={styles.formGroup}>
                 <label htmlFor="message" className={styles.label}>Nỗi đau/Vấn đề bạn đang gặp phải *</label>
-                <textarea 
-                  id="message" 
-                  name="message" 
-                  required 
-                  className={styles.textarea} 
-                  placeholder="Ví dụ: Tôi tính lương cho 10 nhân viên rất mất thời gian..." 
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  className={styles.textarea}
+                  placeholder="Ví dụ: Tôi tính lương cho 10 nhân viên rất mất thời gian..."
                   value={formData.message}
                   onChange={handleChange}
                 ></textarea>
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className={`btn btn-primary ${styles.submitBtn}`}
                 disabled={status === 'loading'}
               >

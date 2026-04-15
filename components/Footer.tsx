@@ -47,20 +47,20 @@ export default function Footer() {
           <ul className={styles.contactInfo}>
             <li>
               <MapPin size={18} className={styles.icon} />
-              <span>Tầng 3, Tòa nhà Innovation, TP. Hồ Chí Minh</span>
+              <span>289, Nguyễn Thái Sơn, Phường An Nhơn, TP. Hồ Chí Minh</span>
             </li>
             <li>
               <Phone size={18} className={styles.icon} />
-              <a href="tel:+84123456789">0123 456 789</a>
+              <a href="tel:+84388494802">0388494802</a>
             </li>
             <li>
               <Mail size={18} className={styles.icon} />
-              <a href="mailto:contact@gecko.io.vn">contact@gecko.io.vn</a>
+              <a href="mailto:support@gecko.io.vn">support@gecko.io.vn</a>
             </li>
           </ul>
         </div>
       </div>
-      
+
       <div className={styles.footerBottom}>
         <div className="container">
           <p>&copy; {new Date().getFullYear()} Gecko Team Inc. All rights reserved.</p>
