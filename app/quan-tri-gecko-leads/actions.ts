@@ -2,6 +2,7 @@
 
 import nodemailer from 'nodemailer';
 import { supabaseAdmin } from '@/lib/supabase-admin';
+import { cookies } from 'next/headers';
 
 export async function sendReplyEmail(contactId: string, replyToEmail: string, subject: string, htmlMessage: string) {
   try {
@@ -61,4 +62,21 @@ export async function sendReplyEmail(contactId: string, replyToEmail: string, su
     console.error('Lỗi khi gửi email:', error);
     return { success: false, message: error.message || 'Hệ thống Lark Mail từ chối kết nối. Vui lòng kiểm tra lại mật khẩu ứng dụng.' };
   }
+}
+
+export async function loginAdmin(email: string, pass: string) {
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminPass = process.env.ADMIN_PASSWORD;
+
+  if (email === adminEmail && pass === adminPass) {
+    const cookieStore = await cookies();
+    cookieStore.set('admin_session', 'authenticated', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 24 * 7, // 1 week
+      path: '/'
+    });
+    return { success: true };
+  }
+  return { success: false, message: 'Sai thông tin đăng nhập' };
 }

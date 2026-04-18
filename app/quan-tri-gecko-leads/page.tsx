@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import { supabaseAdmin } from '@/lib/supabase-admin';
 import AdminTableClient from './AdminTableClient';
+import LoginClient from './LoginClient';
 import styles from './page.module.css';
 
 // Ngăn chặn bot của Google index trang web này
@@ -17,6 +19,15 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function AdminDashboard() {
+  // Lớp khiên số 1: Check Auth Session từ HTTP Only cookie
+  const cookieStore = await cookies();
+  const session = cookieStore.get('admin_session');
+  
+  if (!session || session.value !== 'authenticated') {
+    return <LoginClient />;
+  }
+
+  // Lớp khiên số 2: Database Role key
   const hasServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY ? true : false;
   
   let contacts: any[] = [];
