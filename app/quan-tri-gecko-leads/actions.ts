@@ -30,12 +30,20 @@ export async function sendReplyEmail(contactId: string, replyToEmail: string, su
       debug: true,
     });
 
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gecko.io.vn';
+    const trackingPixel = `<img src="${siteUrl}/api/track/${contactId}" width="1" height="1" style="display:none; opacity:0; pointer-events:none;" alt="" />`;
+    
+    // Nhúng cấy thẻ Pixel vào thân của Thư HTML an toàn trước thẻ đóng body
+    const finalHtmlMessage = htmlMessage.includes('</body>') 
+        ? htmlMessage.replace('</body>', `${trackingPixel}\n</body>`)
+        : htmlMessage + trackingPixel;
+
     // Cấu hình lá thư
     const mailOptions = {
       from: `"Bộ phận hỗ trợ - Gecko Team Inc." <${user}>`, // Sender address
       to: replyToEmail,                                     // Receiver address
       subject: subject,                                     // Subject line
-      html: htmlMessage,                                    // HTML text body
+      html: finalHtmlMessage,                               // HTML text body w/ tracker
     };
 
     // Thực thi việc gửi
@@ -79,4 +87,23 @@ export async function loginAdmin(email: string, pass: string) {
     return { success: true };
   }
   return { success: false, message: 'Sai thông tin đăng nhập' };
+}
+
+export async function deleteContact(contactId: string) {
+    if (!supabaseAdmin) {
+        return { success: false, message: 'Database Administration chưa được kết nối.' };
+    }
+
+    try {
+        const { error } = await supabaseAdmin
+            .from('contacts')
+            .delete()
+            .eq('id', contactId);
+
+        if (error) throw error;
+        return { success: true };
+    } catch (err: any) {
+        console.error('Lỗi khi xoá vé hỗ trợ:', err);
+        return { success: false, message: err.message || 'Có lỗi xảy ra khi thực hiện xoá.' };
+    }
 }

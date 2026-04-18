@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
-import { createClient } from '@/lib/supabase';
+import { submitContact } from './actions';
 import styles from './page.module.css';
 
 export default function ContactContent() {
@@ -16,6 +16,7 @@ export default function ContactContent() {
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,41 +25,18 @@ export default function ContactContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     setStatus('loading');
+    setErrorMessage('');
 
-    // Gọi hàm khởi tạo Client thay vì instance tĩnh
-    const supabase = createClient();
+    const result = await submitContact(formData);
 
-    if (!supabase) {
-      // Demo mode when supabase is not configured
-      setTimeout(() => {
-        setStatus('success');
-        setFormData({ name: '', phone: '', email: '', message: '' });
-      }, 1000);
-      return;
-    }
-
-    try {
-      const { error } = await supabase
-        .from('contacts')
-        .insert([
-          {
-            name: formData.name,
-            phone: formData.phone,
-            email: formData.email,
-            message: formData.message,
-            created_at: new Date().toISOString()
-          }
-        ]);
-
-      if (error) throw error;
-
+    if (result.success) {
       setStatus('success');
       setFormData({ name: '', phone: '', email: '', message: '' });
-    } catch (err: any) {
-      console.error('Error submitting form:', err);
+    } else {
       setStatus('error');
-      setErrorMessage(err.message || 'Có lỗi xảy ra. Vui lòng thử lại sau.');
+      setErrorMessage(result.message || 'Lỗi truyền tải dữ liệu.');
     }
   };
 
@@ -129,7 +107,7 @@ export default function ContactContent() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit}>
+            <form ref={formRef} onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
                 <label htmlFor="name" className={styles.label}>Họ và tên *</label>
                 <input
@@ -189,8 +167,8 @@ export default function ContactContent() {
                 className={`btn btn-primary ${styles.submitBtn}`}
                 disabled={status === 'loading'}
               >
-                {status === 'loading' ? 'Đang gửi...' : (
-                  <>Gửi Yêu Cầu <Send size={18} /></>
+                {status === 'loading' ? 'Đang gửi dữ liệu...' : (
+                  <>Gửi Yêu Cầu <Send size={18} style={{ marginLeft: '6px' }} /></>
                 )}
               </button>
             </form>
