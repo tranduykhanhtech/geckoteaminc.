@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { supabaseAdmin } from '@/lib/supabase-admin';
+import AdminTableClient from './AdminTableClient';
 import styles from './page.module.css';
 
 // Ngăn chặn bot của Google index trang web này
@@ -46,42 +47,7 @@ export default async function AdminDashboard() {
           </div>
         )}
 
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Thời Gian</th>
-                <th>Tên Khách Hàng</th>
-                <th>Số Điện Thoại</th>
-                <th>Email</th>
-                <th>Nội Dung Yêu Cầu</th>
-              </tr>
-            </thead>
-            <tbody>
-              {contacts && contacts.length > 0 ? (
-                contacts.map((contact: any) => (
-                  <tr key={contact.id}>
-                    <td className={styles.timestamp}>
-                      {new Date(contact.created_at).toLocaleString('vi-VN')}
-                    </td>
-                    <td style={{ fontWeight: 500 }}>{contact.name}</td>
-                    <td>{contact.phone}</td>
-                    <td>{contact.email || '-'}</td>
-                    <td style={{ maxWidth: '300px', whiteSpace: 'normal', wordBreak: 'break-word' }}>
-                      {contact.message}
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan={5} className={styles.emptyState}>
-                    Chưa có khách hàng nào gửi form liên hệ.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+        <AdminTableClient contacts={contacts} />
       </div>
     </div>
   );
