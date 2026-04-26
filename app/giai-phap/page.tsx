@@ -5,7 +5,7 @@ import AnimatedSection from '@/components/AnimatedSection';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Giải Pháp Phần Mềm',
+  title: 'Giải Pháp Gecko',
   description: 'Trọn bộ giải pháp quản lý F&B từ Gecko Team Inc., bao gồm POS, Quản lý Nhân sự, Kho bãi và Chăm sóc khách hàng CRM.',
   alternates: {
     canonical: 'https://gecko.io.vn/giai-phap',
@@ -51,7 +51,7 @@ export default function Solutions() {
       desc: 'Giữ chân khách hàng cũ và thu hút khách hàng mới dễ dàng với các chương trình membership, thẻ tích điểm và voucher ưu đãi tự động.',
       features: ['Tự động phân nhóm khách hàng', 'Thiết lập hạng thẻ thành viên', 'Gửi SMS/Zalo chúc mừng sinh nhật', 'Quản lý chiến dịch khuyến mại'],
       icon: <HeartHandshake size={48} />,
-      image: '/DASHBOARD.svg',
+      image: '/CRM.svg',
       reverse: true
     }
   ];
@@ -75,7 +75,7 @@ export default function Solutions() {
             <div key={item.id} id={item.id} className={`${styles.solutionCard} ${item.reverse ? styles.reverse : ''}`}>
               <AnimatedSection delay={0.1} className={styles.imageWrapper}>
                 {item.image ? (
-                  <img src={item.image} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  <img src={item.image} alt={item.title} className={styles.solutionImage} />
                 ) : (
                   <div className={styles.imagePlaceholder}>
                     {item.icon}
@@ -83,7 +83,7 @@ export default function Solutions() {
                   </div>
                 )}
               </AnimatedSection>
-              
+
               <AnimatedSection delay={0.2} className={styles.content}>
                 <span className={styles.tag}>{item.tag}</span>
                 <h2 className={styles.solutionTitle}>{item.title}</h2>
@@ -96,9 +96,9 @@ export default function Solutions() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/lien-he" className="btn btn-secondary" style={{ width: 'fit-content' }}>
+                <a href="https://company.gecko.io.vn" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ width: 'fit-content' }}>
                   Dùng thử ngay <ArrowRight size={18} />
-                </Link>
+                </a>
               </AnimatedSection>
             </div>
           ))}
