@@ -96,9 +96,9 @@ export default function Solutions() {
                     </li>
                   ))}
                 </ul>
-                <a href="https://company.gecko.io.vn" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ width: 'fit-content' }}>
+                <Link href="/lien-he" className="btn btn-secondary" style={{ width: 'fit-content' }}>
                   Dùng thử ngay <ArrowRight size={18} />
-                </a>
+                </Link>
               </AnimatedSection>
             </div>
           ))}
